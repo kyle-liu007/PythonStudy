@@ -36,11 +36,22 @@
     - 在成员前面添加两个下划线即可
     
         class Person():
-        #name时共有成员
+        #name是共有成员
         name = "liu"
-        #age时私有成员
+        #age是私有成员
         __age = 18
     
     - Python的私有不是真私有,是一种成为name mangling
-        的该名策略,可以使用对象._classname_attributename访问
-        
+        的该名策略,可以使用对象._classname__attributename访问
+
+- 受保护的封装 protected
+    - 受保护的封装是将对象成员进行一定级别的分装,在类后者子类中都可
+        以进行访问，但是在外部不行
+    - 封装方法：在成员名称前添加一个下划线
+
+- 公开    
+
+- supper
+    - supper不是关键字,而是关键字
+    - super的作用是获取MRO（MethodResolutionOrder)列表中的第一个类
+    - super与父类没有直接的的实质性关系,但通过super可以调用到父类

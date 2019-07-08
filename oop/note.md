@@ -51,12 +51,12 @@
 
 - 公开    
 
-- supper
+# supper
     - supper不是关键字,而是关键字
     - super的作用是获取MRO（MethodResolutionOrder)列表中的第一个类(类名.__mro__ 是获取该类的父类的函数)
     - super与父类没有直接的的实质性关系,但通过super可以调用到父类
     
-- 常用魔术方法
+# 常用魔术方法
     - 魔术方法就是不需要人为调用的方法，基本时在特定的时刻自动触发
     - 魔术方法的统一特征：方法名被前后各两个下划线包裹
     - 操作类：
@@ -80,5 +80,52 @@
             - 注意：字符串的比较遵循Unicode码,从第一个字符开始比较,
                 谁的Unicode的码大,谁就大,一旦得出结果,则不再比较后面的字符,
                 否则继续下一个字符的比较
-               
-                
+
+# 抽象类  
+- 抽象方法的定义：没有具体实现内容的方法成为抽象方法
+- 抽象方法的主要意义时规范子类的行为和接口
+- 抽象类的使用需要借助abc模块
+- 语法：
+
+            import abc
+
+
+            class ClassName(metaclass=abc.ABCMeta):
+                '''
+                定义一个抽象类
+                '''
+                @abc.abstractmethod
+                def method(self):
+                    '''
+                    定义一个实例抽象方法
+                    '''
+                    pass
+                 
+                @abc.abstractclassmethod
+                def classmethod(cls):
+                    '''定义一个类抽象方法'''
+                    pass
+        
+                  
+                @abc.abstractstaticmethod
+                def staticmrthod():
+                    '''定义一个静态抽象方法'''
+                    pass
+            
+- 包含抽象方法的类叫抽象类,通常称为ABC(abstract class)类
+- 抽象类的使用：
+    - 抽象类可以包含抽象方法,也可包含具体方法
+    - 抽象类中可以有方法也可以有属性
+    - 抽象类不允许直接实例化,且继承的子类必须实现所有继承来的抽象方法
+    - 假设子类没有实现所有继承的抽象方法,则子类也不能实例化
+    - 抽象类的主要作用是设定类的标准,以便于开发的时候具有统一的规范
+
+# 创建元类
+    - 语法：
+        class ClassNameMateClass(type):
+            def __new__(cls, name, bases, attrs):
+                attrs['attr_name1'] = value
+                attrs['attr_name2'] = value
+                …………
+                return type.__new__(cls, name, bases, attrs)
+                    
